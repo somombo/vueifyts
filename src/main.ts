@@ -3,8 +3,8 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.css'
 
-import App from './App'
-import router from './router'
+import App from './App.vue'
+import router from './router/'
 
 Vue.use(Vuetify, { theme: {
   primary: '#ee44aa',
@@ -18,7 +18,7 @@ Vue.use(Vuetify, { theme: {
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
+// tslint:disable-next-line:no-unused-expression
 new Vue({
   el: '#app',
   router,

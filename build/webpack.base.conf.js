@@ -11,7 +11,7 @@ function resolve (dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: './src/main.ts'
   },
   output: {
     path: config.build.assetsRoot,
@@ -21,11 +21,15 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
-      '@': resolve('src'),
+      '_': resolve('src'),
+      'vue$': 'vue/dist/vue.runtime.esm.js'
     }
   },
+  // performance: {
+  //   hints: false
+  // },
   module: {
     rules: [
       {
@@ -33,10 +37,18 @@ module.exports = {
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
+      // {
+      //   test: /\.js$/,
+      //   loader: 'babel-loader',
+      //   exclude: /node_modules/
+      // },
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
+        test: /\.tsx?$/,
+        loader: 'ts-loader',
+        exclude: /node_modules/,
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

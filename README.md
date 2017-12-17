@@ -1,4 +1,4 @@
-# collins
+# My Vue.ts App
 
 > A Vue.js project
 
